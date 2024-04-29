@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+
+    <color name="my_light_primary">#3F51B5</color> <!-- Indigo 500 -->
+    <color name="my_light_on_primary">#FFFFFF</color> <!-- White -->
+    <color name="my_light_primary_container">#1A237E</color> <!-- Indigo 900 -->
+    <color name="my_light_secondary">#FF4081</color> <!-- Pink A200 -->
+    <color name="my_light_on_secondary">#000000</color> <!-- Black -->
+    <color name="my_light_secondary_container">#C51162</color> <!-- Pink A700 -->
+
     <color name="white">#FFFFFFFF</color>
 </resources>

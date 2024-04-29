@@ -2,6 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.DailyNews" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="colorOnPrimary">@color/my_light_on_primary</item>
+        <item name="colorPrimaryContainer">@color/my_light_primary_container</item>
+        <item name="colorSecondary">@color/my_light_secondary</item>
+        <item name="colorOnSecondary">@color/my_light_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/my_light_secondary_container</item>
     </style>
 </resources>
