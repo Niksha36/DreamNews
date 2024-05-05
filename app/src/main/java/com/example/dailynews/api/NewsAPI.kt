@@ -1,7 +1,7 @@
-package com.example.dailynews.ui.api
+package com.example.dailynews.api
 
-import com.example.dailynews.ui.NewsResponse
-import com.example.dailynews.ui.util.Constants.API_KEY
+import com.example.dailynews.models.NewsResponse
+import com.example.dailynews.util.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -18,6 +18,7 @@ interface NewsAPI {
         api_key:String = API_KEY
     ): Response<NewsResponse>
 
+    @GET("v2/everything")
     suspend fun searchNews(
         @Query("q")
         searchRequest: String,

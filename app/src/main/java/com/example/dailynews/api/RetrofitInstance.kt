@@ -1,6 +1,6 @@
-package com.example.dailynews.ui.api
+package com.example.dailynews.api
 
-import com.example.dailynews.ui.util.Constants.BASE_URL
+import com.example.dailynews.util.Constants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
