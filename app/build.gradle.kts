@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
+    id ("androidx.navigation.safeargs") version "2.7.7" apply false
 }
 
 android {
@@ -46,6 +47,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.media3:media3-common:1.3.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -54,16 +56,16 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 
     // Room
-    implementation ("androidx.room:room-runtime:2.2.5")
-    kapt ("androidx.room:room-compiler:2.2.5")
-    implementation ("androidx.room:room-ktx:2.2.5")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
 
     // Kotlin Extensions and Coroutines support for Room
-    implementation ("androidx.room:room-ktx:2.2.5")
+    implementation ("androidx.room:room-ktx:2.6.1")
 
     // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
 
     // Coroutine Lifecycle Scopes
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
@@ -75,8 +77,9 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.5.0")
 
     // Navigation Components
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.2.1")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.2.1")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7")
 
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.11.0")

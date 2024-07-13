@@ -12,7 +12,7 @@ import com.example.dailynews.models.Article
     version = 1,
 )
 @TypeConverters(Converters::class)
-abstract class ArticleDatabase: RoomDatabase() {
+abstract class ArticleDatabase : RoomDatabase() {
     abstract fun getArticleDao(): ArticleDao
 
     companion object {
@@ -30,7 +30,7 @@ abstract class ArticleDatabase: RoomDatabase() {
             ).build()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: createDB(context).also{ instance = it}
+            instance ?: createDB(context).also { instance = it }
         }
 
     }
