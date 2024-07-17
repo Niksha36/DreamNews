@@ -22,7 +22,7 @@
         style="?attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/transparent"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,6 +8,8 @@
     <color name="my_light_secondary">#FF4081</color> <!-- Pink A200 -->
     <color name="my_light_on_secondary">#000000</color> <!-- Black -->
     <color name="my_light_secondary_container">#C51162</color> <!-- Pink A700 -->
+    <color name="red">#FF0000</color>
+    <color name="green">#66FF00</color>
 
     <color name="white">#FFFFFFFF</color>
 </resources>

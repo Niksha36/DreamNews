@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
-    id ("androidx.navigation.safeargs") version "2.7.7" apply false
+    id ("androidx.navigation.safeargs")
 }
 
 android {
@@ -79,7 +79,6 @@ dependencies {
     // Navigation Components
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7")
 
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.11.0")

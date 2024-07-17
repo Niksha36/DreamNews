@@ -2,6 +2,7 @@ package com.example.dailynews.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -26,6 +27,7 @@ class NewsActivity : AppCompatActivity() {
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         val bottomNavigationView = binding.bottomNavigationView
         val newsNavHostFragment = binding.newsNavHostFragment
         // connecting bottom navigation with nav controller
