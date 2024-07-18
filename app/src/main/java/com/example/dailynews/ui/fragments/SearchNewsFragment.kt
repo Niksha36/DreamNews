@@ -32,6 +32,10 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         viewModel = (activity as NewsActivity).viewModel
         binding = FragmentSearchNewsBinding.bind(view)
         setUpRecyclerView()
+        binding.clearButton.setOnClickListener {
+            binding.etSearch.text.clear()
+            binding.clearButton.visibility = View.GONE
+        }
 
         myAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -42,7 +46,6 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 bundle
             )
         }
-
         var job: Job?= null
         binding.etSearch.addTextChangedListener { editable ->
             job?.cancel()
@@ -50,9 +53,11 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
                     if (it.toString().isNotEmpty()) {
+                        binding.clearButton.visibility = View.VISIBLE
                         myAdapter.differ.submitList(emptyList())
                         viewModel.getSearchingNews(it.toString())
                     } else {
+                        binding.clearButton.visibility = View.GONE
                         myAdapter.differ.submitList(emptyList())
                     }
                 }
