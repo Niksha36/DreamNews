@@ -29,9 +29,24 @@ class ArticleFragment: Fragment(R.layout.fragment_article) {
             article.url?.let { loadUrl(it) }
         }
 
+
         binding.fab.setOnClickListener {
-            viewModel.saveArticle(article)
-            Snackbar.make(view,"Article was successfully saved", Snackbar.LENGTH_SHORT).show()
+            val counter = ++viewModel.counter
+            if (counter % 2 != 0) {
+                viewModel.saveArticle(article)
+                val snackbar =
+                    Snackbar.make(view, "Article was successfully saved", Snackbar.LENGTH_SHORT)
+                snackbar.anchorView =
+                    (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
+                snackbar.show()
+            } else{
+                viewModel.deleteArticle(article)
+                val snackbar =
+                    Snackbar.make(view, "Article was deleted", Snackbar.LENGTH_SHORT)
+                snackbar.anchorView =
+                    (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
+                snackbar.show()
+            }
         }
     }
 }

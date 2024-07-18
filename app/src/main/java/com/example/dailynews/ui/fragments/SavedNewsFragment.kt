@@ -45,12 +45,13 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
                 val articleToDelete = myAdapter.differ.currentList[position]
                 viewModel.deleteArticle(articleToDelete)
 
-                Snackbar.make(view, "Article was successfully deleted", Snackbar.LENGTH_LONG).apply {
+                val snackbar = Snackbar.make(view, "Article was successfully deleted", Snackbar.LENGTH_LONG).apply {
                     setAction("Undo") {
                         viewModel.saveArticle(articleToDelete)
                     }
-                    show()
                 }
+                snackbar.anchorView = (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
+                snackbar.show()
             }
         }
         ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(binding.rvSavedNews)

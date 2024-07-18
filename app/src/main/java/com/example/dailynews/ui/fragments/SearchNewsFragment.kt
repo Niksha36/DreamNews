@@ -32,9 +32,11 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         viewModel = (activity as NewsActivity).viewModel
         binding = FragmentSearchNewsBinding.bind(view)
         setUpRecyclerView()
+
         binding.clearButton.setOnClickListener {
             binding.etSearch.text.clear()
             binding.clearButton.visibility = View.GONE
+            viewModel.getSearchingNews(" ")
         }
 
         myAdapter.setOnItemClickListener {
@@ -59,6 +61,8 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                     } else {
                         binding.clearButton.visibility = View.GONE
                         myAdapter.differ.submitList(emptyList())
+                        viewModel.getSearchingNews(" ")
+
                     }
                 }
             }

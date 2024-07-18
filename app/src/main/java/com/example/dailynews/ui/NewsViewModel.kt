@@ -22,6 +22,9 @@ class NewsViewModel(
     val searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var searchNewsPage = 1
     var searchNewsResponses:NewsResponse ?= null
+
+    //
+    var counter = 0
     init {
         getBreakingNews("us")
     }
@@ -75,6 +78,7 @@ class NewsViewModel(
         return Resource.Error(response.message())
     }
 
+
     // Добавлю функции из NewsResponse которые взаиможействуют с DAO
     fun saveArticle(article: Article) = viewModelScope.launch {
         newsRepository.upsert(article)
@@ -83,4 +87,5 @@ class NewsViewModel(
         newsRepository.deleteArticle(article)
     }
     fun getSavedArticles() = newsRepository.getAllArticles()
+
 }
