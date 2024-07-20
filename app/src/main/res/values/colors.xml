@@ -13,4 +13,5 @@
     <color name="green">#66FF00</color>
     <color name="white">#FFFFFFFF</color>
     <color name="progress_bar_color">#2196F3</color>
+    <color name="blue">#2196F3</color>
 </resources>

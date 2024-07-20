@@ -20,6 +20,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import com.example.dailynews.util.Constants.SEARCH_NEWS_TIME_DELAY
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
@@ -83,7 +84,11 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
                 is Resource.Error -> {
                     hideProgressBar()
-                    response.message?.let { message -> Log.e(TAG, "An error occured: $message") }
+                    response.message?.let {
+                        val snackbar = Snackbar.make(view, "An error occurred: $it", Snackbar.LENGTH_LONG)
+                        snackbar.anchorView = (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
+                        snackbar.show()
+                    }
                 }
 
                 is Resource.Loading -> {

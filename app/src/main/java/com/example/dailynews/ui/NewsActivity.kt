@@ -20,7 +20,7 @@ class NewsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(application,newsRepository)
 
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
     }
@@ -30,8 +30,34 @@ class NewsActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         val bottomNavigationView = binding.bottomNavigationView
         val newsNavHostFragment = binding.newsNavHostFragment
+        val navController = findNavController(R.id.newsNavHostFragment)
         // connecting bottom navigation with nav controller
         bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
+
+        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.breakingNewsFragment -> {
+                    if (navController.currentDestination?.id != R.id.breakingNewsFragment) {
+                        navController.navigate(R.id.breakingNewsFragment)
+                    }
+                    true
+                }
+                R.id.searchNewsFragment -> {
+                    if (navController.currentDestination?.id != R.id.searchNewsFragment) {
+                        navController.navigate(R.id.searchNewsFragment)
+                    }
+                    true
+                }
+                R.id.savedNewsFragment -> {
+                    if (navController.currentDestination?.id != R.id.savedNewsFragment) {
+                        navController.navigate(R.id.savedNewsFragment)
+                    }
+                    true
+                }
+                // Handle other cases for other menu items
+                else -> false
+            }
+        }
     }
 
 }

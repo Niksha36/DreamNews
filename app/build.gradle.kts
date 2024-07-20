@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
     id ("androidx.navigation.safeargs")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -57,7 +58,7 @@ dependencies {
 
     // Room
     implementation ("androidx.room:room-runtime:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
     implementation ("androidx.room:room-ktx:2.6.1")
 
     // Kotlin Extensions and Coroutines support for Room
@@ -81,6 +82,6 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     // Glide
-    implementation ("com.github.bumptech.glide:glide:4.11.0")
-    kapt ("com.github.bumptech.glide:compiler:4.11.0")
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    kapt("com.github.bumptech.glide:ksp:4.14.2")
 }

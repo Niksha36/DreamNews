@@ -9,7 +9,7 @@ import com.example.dailynews.models.Article
 
 @Database(
     entities = [Article::class],
-    version = 2,
+    version = 4,
 )
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase() {

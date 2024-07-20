@@ -17,6 +17,7 @@ import com.example.dailynews.ui.NewsActivity
 import com.example.dailynews.ui.NewsViewModel
 import com.example.dailynews.util.Constants.QUERY_PAGE_SIZE
 import com.example.dailynews.util.Resource
+import com.google.android.material.snackbar.Snackbar
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     private lateinit var binding: FragmentBreakingNewsBinding
@@ -55,7 +56,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
                 is Resource.Error -> {
                     hideProgressBar()
-                    response.message?.let { message -> Log.e(TAG, "An error occured: $message") }
+                    response.message?.let {
+                        val snackbar = Snackbar.make(view, "An error occurred: $it", Snackbar.LENGTH_LONG)
+                        snackbar.anchorView = (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
+                        snackbar.show()
+                    }
                 }
 
                 is Resource.Loading -> {
