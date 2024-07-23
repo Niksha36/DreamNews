@@ -15,4 +15,4 @@ data class Article(
     val source: Source?,
     val title: String?,
     val urlToImage: String?
-): Serializable
+) : Serializable

@@ -4,14 +4,13 @@ import com.example.dailynews.api.RetrofitInstance
 import com.example.dailynews.db.ArticleDatabase
 import com.example.dailynews.models.Article
 
-// Для чего нужен этот репозиторий???
 class NewsRepository(
     val db: ArticleDatabase
 ) {
     // Получение всех новостей
-    suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
+    suspend fun getBreakingNews(countryCode: String, pageNumber: Int, sortCategory:String) =
         //getBreakingNews - это функция которая находится в NewsAPI
-        RetrofitInstance.api?.getBreakingNews(countryCode, pageNumber)
+        RetrofitInstance.api?.getBreakingNews(countryCode, pageNumber, sortCategory)
 
     suspend fun searchNews(searchRequest: String, pageNumber: Int) =
         RetrofitInstance.api?.searchNews(searchRequest, pageNumber)

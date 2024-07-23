@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">DailyNews</string>
     <string name="breaking_news_title">Breaking News</string>
     <string name="saved_news_title">Saved News</string>
     <string name="search_news_title">Search News</string>
+    <string name="search">Search...</string>
+    <string name="business">business</string>
+    <string name="entertainment">entertainment</string>
+    <string name="general">general</string>
+    <string name="health">health</string>
+    <string name="science">science</string>
+    <string name="sports">sports</string>
+    <string name="technology">technology</string>
 </resources>

@@ -14,6 +14,8 @@ interface NewsAPI {
         countryName: String = "us",
         @Query("page")
         pageNumber:Int = 1,
+        @Query("category")
+        sortCategory:String = "",
         @Query("apiKey")
         api_key:String = API_KEY
     ): Response<NewsResponse>

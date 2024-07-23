@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.widget.Button
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -30,27 +31,32 @@ class NewsViewModel(
     var searchNewsPage = 1
     var searchNewsResponses:NewsResponse ?= null
 
-    //
-    var counter = 0
+    val category:MutableLiveData<String> = MutableLiveData("")
+    val activeButtonId: MutableLiveData<Int?> = MutableLiveData(null)
+
     init {
-        getBreakingNews("us")
+        getBreakingNews("us", "")
     }
 
-    fun getBreakingNews(countryName: String) = viewModelScope.launch {
-        safeBreakingNewsCall(countryName)
+    fun getBreakingNews(countryName: String, sortCategory:String) = viewModelScope.launch {
+        safeBreakingNewsCall(countryName, sortCategory)
     }
 
     fun getSearchingNews(searchRequest: String) = viewModelScope.launch {
+        if (searchRequest.isBlank()) {
+            searchNews.postValue(Resource.Success(NewsResponse(mutableListOf(), "ok", 0)))
+            return@launch
+        }
         searchNewsPage = 1
         searchNewsResponses = null
         safeSearchingNewsCall(searchRequest)
     }
 
-    private suspend fun safeBreakingNewsCall(countryName: String) {
+    private suspend fun safeBreakingNewsCall(countryName: String, sortCategory: String) {
         breakingNews.postValue(Resource.Loading())
         try {
             if (hasInternetConnection()) {
-                val response = newsRepository.getBreakingNews(countryName, breakingNewsPage)
+                val response = newsRepository.getBreakingNews(countryName, breakingNewsPage, sortCategory)
                 breakingNews.postValue(response?.let { handleBreakingNewsResponse(it) })
             } else {
                 breakingNews.postValue(Resource.Error("Please check your internet connection and try again"))

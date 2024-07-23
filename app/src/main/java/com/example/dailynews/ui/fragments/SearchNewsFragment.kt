@@ -27,7 +27,6 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     lateinit var viewModel: NewsViewModel
     lateinit var binding: FragmentSearchNewsBinding
     lateinit var myAdapter: NewsAdapter
-    val TAG = "SearchNewsFragment"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as NewsActivity).viewModel
@@ -62,7 +61,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                     } else {
                         binding.clearButton.visibility = View.GONE
                         myAdapter.differ.submitList(emptyList())
-                        viewModel.getSearchingNews(" ")
+                        viewModel.getSearchingNews("")
 
                     }
                 }

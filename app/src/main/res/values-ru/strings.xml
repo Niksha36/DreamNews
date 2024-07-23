@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DailyNews</string>
+    <string name="breaking_news_title">Последние новости</string>
+    <string name="saved_news_title">Сохраненные</string>
+    <string name="search_news_title">Поиск</string>
+    <string name="search">Поиск...</string>
+    <string name="business">бизнес</string>
+    <string name="entertainment">развлечения</string>
+    <string name="general">общее</string>
+    <string name="health">здоровье</string>
+    <string name="science">наука</string>
+    <string name="sports">спорт</string>
+    <string name="technology">технологии</string>
+</resources>

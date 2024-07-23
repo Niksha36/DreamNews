@@ -1,15 +1,15 @@
 package com.example.dailynews.ui.fragments
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import android.util.Log
-import android.widget.AbsListView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.dailynews.R
 import com.example.dailynews.adapters.NewsAdapter
 import com.example.dailynews.databinding.FragmentBreakingNewsBinding
@@ -23,11 +23,18 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     private lateinit var binding: FragmentBreakingNewsBinding
     lateinit var viewModel: NewsViewModel
     lateinit var myAdapter: NewsAdapter
-    val TAG = "BreakingNewsFragment"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as NewsActivity).viewModel
         binding = FragmentBreakingNewsBinding.bind(view)
+//        adding swipe refresh
+        val swipeRefreshLayout = binding.swipeRefreshLayout
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.breakingNewsPage = 1
+            viewModel.breakingNewsResponses = null
+            viewModel.getBreakingNews("us", viewModel.category.value!!)
+            swipeRefreshLayout.isRefreshing = false // Hide the refresh icon after refreshing
+        }
         setUpRecyclerView()
 
         myAdapter.setOnItemClickListener {
@@ -48,8 +55,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                         myAdapter.differ.submitList(NewsResponce.articles)
                         val totalPages = NewsResponce.totalResults / QUERY_PAGE_SIZE + 2
                         isLastPage = viewModel.breakingNewsPage == totalPages
-                        if(isLastPage){
-                            binding.rvBreakingNews.setPadding(0,0,0,0)
+                        if (isLastPage) {
+                            binding.rvBreakingNews.setPadding(0, 0, 0, 0)
                         }
                     }
                 }
@@ -57,8 +64,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let {
-                        val snackbar = Snackbar.make(view, "An error occurred: $it", Snackbar.LENGTH_LONG)
-                        snackbar.anchorView = (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
+                        val snackbar =
+                            Snackbar.make(view, "An error occurred: $it", Snackbar.LENGTH_LONG)
+                        snackbar.anchorView =
+                            (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
                         snackbar.show()
                     }
                 }
@@ -68,6 +77,64 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 }
             }
         })
+
+        //обрабатываю снопки из scroll view
+        setCategoryClickListener(binding.businessButton, "business")
+        setCategoryClickListener(binding.entertainmentButton, "entertainment")
+        setCategoryClickListener(binding.generalButton, "general")
+        setCategoryClickListener(binding.healthButton, "health")
+        setCategoryClickListener(binding.scienceButton, "science")
+        setCategoryClickListener(binding.sportsButton, "sports")
+        setCategoryClickListener(binding.technologyButton, "technology")
+
+        viewModel.activeButtonId.observe(viewLifecycleOwner, Observer {
+            updateButtonColors()
+        })
+    }
+
+    private fun updateButtonColors() {
+        val allButtons = listOf(
+            binding.businessButton,
+            binding.entertainmentButton,
+            binding.generalButton,
+            binding.healthButton,
+            binding.scienceButton,
+            binding.sportsButton,
+            binding.technologyButton
+        )
+
+        allButtons.forEach { button ->
+            if (button.id == viewModel.activeButtonId.value) {
+                button.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(requireContext(), R.color.my_light_active)
+                )
+            } else {
+                button.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(requireContext(), R.color.blue)
+                )
+            }
+        }
+    }
+
+
+    private fun setCategoryClickListener(button: Button, category: String) {
+        button.setOnClickListener {
+            if (viewModel.category.value != category) {
+                viewModel.category.value = category
+                viewModel.activeButtonId.value = button.id
+
+                viewModel.breakingNewsPage = 1
+                viewModel.breakingNewsResponses = null
+            } else {
+                viewModel.breakingNewsPage = 1
+                viewModel.breakingNewsResponses = null
+
+                viewModel.activeButtonId.value = null
+                viewModel.category.value = ""
+            }
+            myAdapter.differ.submitList(emptyList())
+            viewModel.getBreakingNews("us", viewModel.category.value!!)
+        }
     }
 
     private fun hideProgressBar() {
@@ -85,7 +152,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     var isScrolling = false
     var isLastPage = false
 
-    val myOnScrollListener = object: RecyclerView.OnScrollListener(){
+    val myOnScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
             val layoutManager = recyclerView.layoutManager as LinearLayoutManager
@@ -99,7 +166,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning
                     && isTotalMoreThenVisible && isScrolling
             if (shouldPaginate) {
-                viewModel.getBreakingNews("us")
+                viewModel.getBreakingNews("us", viewModel.category.value.toString())
+
             }
         }
 

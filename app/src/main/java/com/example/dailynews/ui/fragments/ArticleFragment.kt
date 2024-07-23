@@ -5,12 +5,14 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dailynews.R
 import com.example.dailynews.databinding.FragmentArticleBinding
@@ -30,6 +32,15 @@ class ArticleFragment: Fragment(R.layout.fragment_article) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as NewsActivity).viewModel
         binding = FragmentArticleBinding.bind(view)
+        //connecting toolbar
+        val toolbar = binding.toolbar
+        (activity as? AppCompatActivity)?.setSupportActionBar(toolbar)
+        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayShowHomeEnabled(true)
+        (activity as? AppCompatActivity)?.supportActionBar?.title = ""
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
 
         val article = args.article
         binding.webView.apply{
