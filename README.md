@@ -7,7 +7,7 @@ This is a simple News app with MVVM architecture. There are no Jetpack Compose a
 It contains all the basic functionality that each and every news app should have. So you can search all breaking news, filter them by clicking the buttons above.
 Then you can click to any news and add it to the saved news, if you want to delete it you can swipe it or click once more to a save button. You can search news by writing your request in a search fragment.
 
-This app was translated to english and russian languages :white_check_mark:
+_**This app was translated to english and russian languages :white_check_mark:**_
 
 In this project i use news api of NewsAPI site: https://newsapi.org/
 
