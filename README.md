@@ -11,6 +11,8 @@ _**This app was translated to english and russian languages :white_check_mark:**
 
 In this project i use news api of NewsAPI site: https://newsapi.org/
 
+Some news from google news source do not open in Russia but in other countries works fine.
+
 # Features that were applyed in this project
 
 1)MVVM architecture
