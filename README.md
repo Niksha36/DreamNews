@@ -1,6 +1,6 @@
 # My DreamNews APP :cookie:
 
-YouTube video with app functionality: https://youtu.be/AECh1xpZNzE
+**YouTube video with app functionality: https://youtu.be/AECh1xpZNzE**
 
 This is a simple News app with MVVM architecture. There are no Jetpack Compose and other cool staff. 
 
@@ -11,7 +11,7 @@ _**This app was translated to english and russian languages :white_check_mark:**
 
 In this project i use news api of NewsAPI site: https://newsapi.org/
 
-Some news from google news source do not open in Russia but in other countries works fine.
+_Some news from google news source do not open in Russia but in other countries works fine._
 
 # Features that were applyed in this project
 
