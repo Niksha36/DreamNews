@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import okio.IOException
 import retrofit2.Response
 class NewsViewModel(
-    // Что такое newsRepository? Это класс который будет предоставялть нам дрступ к бд в ViewModel
+    //newsRepository - это класс который будет предоставялть нам дрступ к бд в ViewModel
     // We can not implement parameters in ViewModel without ViewModelProviderFactory.
     app:Application,
     val newsRepository: NewsRepository
@@ -47,8 +47,6 @@ class NewsViewModel(
             searchNews.postValue(Resource.Success(NewsResponse(mutableListOf(), "ok", 0)))
             return@launch
         }
-        searchNewsPage = 1
-        searchNewsResponses = null
         safeSearchingNewsCall(searchRequest)
     }
 

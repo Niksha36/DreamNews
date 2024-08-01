@@ -54,6 +54,8 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             job = MainScope().launch {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
+                    viewModel.searchNewsPage = 1
+                    viewModel.searchNewsResponses = null
                     if (it.toString().isNotEmpty()) {
                         binding.clearButton.visibility = View.VISIBLE
                         myAdapter.differ.submitList(emptyList())

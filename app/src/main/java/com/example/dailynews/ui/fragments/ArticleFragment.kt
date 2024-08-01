@@ -48,9 +48,6 @@ class ArticleFragment: Fragment(R.layout.fragment_article) {
             article.url?.let { loadUrl(it) }
         }
 
-        binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
-        binding.fab.invalidate()
-
         viewModel.isArticleInDb(article.url).observe(viewLifecycleOwner, Observer {
             if (it) {
                 binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
@@ -58,7 +55,6 @@ class ArticleFragment: Fragment(R.layout.fragment_article) {
                 binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
             }
         })
-
 
         binding.fab.setOnClickListener {
             viewModel.isArticleInDb(article.url).observe(viewLifecycleOwner, Observer {

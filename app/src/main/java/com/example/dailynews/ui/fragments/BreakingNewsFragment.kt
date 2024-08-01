@@ -88,11 +88,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         setCategoryClickListener(binding.technologyButton, "technology")
 
         viewModel.activeButtonId.observe(viewLifecycleOwner, Observer {
-            updateButtonColors()
+            updateButtonColors(it)
         })
     }
 
-    private fun updateButtonColors() {
+    private fun updateButtonColors(activeButtonId:Int?) {
         val allButtons = listOf(
             binding.businessButton,
             binding.entertainmentButton,
@@ -104,7 +104,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         )
 
         allButtons.forEach { button ->
-            if (button.id == viewModel.activeButtonId.value) {
+            if (button.id == activeButtonId) {
                 button.backgroundTintList = ColorStateList.valueOf(
                     ContextCompat.getColor(requireContext(), R.color.my_light_active)
                 )
