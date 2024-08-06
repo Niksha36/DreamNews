@@ -10,6 +10,9 @@ import com.example.dailynews.models.Article
 
 @Dao
 interface ArticleDao {
+    @Query("DELETE FROM articleTable")
+    suspend fun clearAllArticles()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     // this function will return inserted ids of items
     suspend fun upsert(article: Article): Long

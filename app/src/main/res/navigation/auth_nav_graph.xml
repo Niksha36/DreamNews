@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/greetingFragment">
+
+    <fragment
+        android:id="@+id/greetingFragment"
+        android:name="com.example.dailynews.ui.auth.auth_fragmens.GreetingFragment"
+        android:label="fragment_greeting"
+        tools:layout="@layout/fragment_greeting" >
+        <action
+            android:id="@+id/action_greetingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_greetingFragment_to_news_nav_graph"
+            app:destination="@id/news_nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.example.dailynews.ui.auth.auth_fragmens.CreateAccountFragment"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" >
+        <action
+            android:id="@+id/action_createAccountFragment_to_news_nav_graph"
+            app:destination="@id/news_nav_graph" />
+        <action
+            android:id="@+id/action_createAccountFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_createAccountFragment_to_emailVerification"
+            app:destination="@id/emailVerification" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.dailynews.ui.auth.auth_fragmens.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_news_nav_graph"
+            app:destination="@id/news_nav_graph" />
+        <action
+            android:id="@+id/action_loginFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_emailVerification"
+            app:destination="@id/emailVerification" />
+    </fragment>
+    <include app:graph="@navigation/news_nav_graph" />
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.example.dailynews.ui.auth.auth_fragmens.ResetPasswordFragment"
+        android:label="fragment_reset_password"
+        tools:layout="@layout/fragment_reset_password" >
+        <action
+            android:id="@+id/action_resetPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailVerification"
+        android:name="com.example.dailynews.ui.auth.auth_fragmens.EmailVerification"
+        android:label="fragment_email_verification"
+        tools:layout="@layout/fragment_email_verification" />
+</navigation>

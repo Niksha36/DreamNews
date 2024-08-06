@@ -20,5 +20,6 @@ class NewsRepository(
     suspend fun deleteArticle(article: Article) = db.getArticleDao().deleteItems(article)
     fun getAllArticles() = db.getArticleDao().getAllItems()
     suspend fun getArticleByUrl(url:String) = db.getArticleDao().getArticleByUrl(url)
+    suspend fun delAllArticles() = db.clearAllTables()
 
 }

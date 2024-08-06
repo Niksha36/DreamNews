@@ -8,10 +8,11 @@
     <item
         android:id="@+id/savedNewsFragment"
         android:title="@string/saved_news_title"
-        android:icon="@drawable/ic_favorite"/>
+        android:icon="@drawable/ic_profile"/>
 
     <item
         android:id="@+id/searchNewsFragment"
         android:title="@string/search_news_title"
         android:icon="@drawable/ic_all_news"/>
+
 </menu>
