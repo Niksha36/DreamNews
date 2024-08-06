@@ -1,6 +1,6 @@
 package com.example.dailynews.ui.fragments
 
-import android.annotation.SuppressLint
+
 import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -9,10 +9,7 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dailynews.R
@@ -21,7 +18,6 @@ import com.example.dailynews.ui.NewsActivity
 import com.example.dailynews.ui.NewsViewModel
 import com.example.dailynews.util.AuthStates
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
 
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {

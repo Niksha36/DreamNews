@@ -11,9 +11,6 @@ import com.example.dailynews.R
 import com.example.dailynews.databinding.ActivityNewsBinding
 import com.example.dailynews.db.ArticleDatabase
 import com.example.dailynews.repository.NewsRepository
-import com.example.dailynews.util.AuthStates
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class NewsActivity : AppCompatActivity() {
     lateinit var binding: ActivityNewsBinding

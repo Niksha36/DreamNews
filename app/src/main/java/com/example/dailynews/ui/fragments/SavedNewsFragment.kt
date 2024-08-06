@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailynews.R
-import com.example.dailynews.adapters.NewsAdapter
 import com.example.dailynews.adapters.SavedNewsAdapter
 import com.example.dailynews.databinding.FragmentSavedNewsBinding
 import com.example.dailynews.ui.NewsActivity
