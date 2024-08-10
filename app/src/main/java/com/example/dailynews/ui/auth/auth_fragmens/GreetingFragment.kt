@@ -24,8 +24,9 @@ class GreetingFragment : Fragment(R.layout.fragment_greeting) {
             viewModel.exitAccount()
             val intent = Intent(requireContext(), NewsActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                if (viewModel.getAuthState().name != AuthStates.SIGN_IN_LATER.name)
-                putExtra("CLEAR_DB", true)
+                if (viewModel.getAuthState().name != AuthStates.SIGN_IN_LATER.name) {
+                    putExtra("CLEAR_DB", true)
+                }
             }
             viewModel.saveAuthState(AuthStates.SIGN_IN_LATER)
             startActivity(intent)

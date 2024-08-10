@@ -50,7 +50,7 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
                 val articleToDelete = myAdapter.differ.currentList[position]
                 viewModel.deleteArticle(articleToDelete)
                 if (authState == AuthStates.AUTHENTICATED.name) {viewModel.deleteFromFireStore(articleToDelete)}
-                val snackbar = Snackbar.make(view, "Article was successfully deleted", Snackbar.LENGTH_LONG).apply {
+                val snackbar = Snackbar.make(view, R.string.delete_article_info, Snackbar.LENGTH_LONG).apply {
                     setAction("Undo") {
                         viewModel.saveArticle(articleToDelete)
                         if (authState == AuthStates.AUTHENTICATED.name) {viewModel.saveToFireStore(articleToDelete)}

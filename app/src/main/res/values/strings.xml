@@ -10,4 +10,24 @@
     <string name="science">science</string>
     <string name="sports">sports</string>
     <string name="technology">technology</string>
+    <string name="sign_in">Sign in</string>
+    <string name="continue_without_account">Continue without account</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="next">Next</string>
+    <string name="create_account">Create account</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="already_have_an_account">Alredy have an account? Sign in</string>
+    <string name="create_a_new_account">Create a new account</string>
+    <string name="email_verification">Email verification</string>
+    <string name="email_verification_info">Please click on get link button and then check your inbox. We will sent you an email verification link</string>
+    <string name="get_link">Get link!</string>
+    <string name="reset_password_info">Enter your email and we will send you a link to reset your password</string>
+    <string name="reset_password">Reset password</string>
+    <string name="submit">Submit</string>
+    <string name="delete_article_info">Article was successfully deleted</string>
+    <string name="save_artiсle_info">Article was successfully saved</string>
+    <string name="internet_connection_info">Please check your internet connection and try again</string>
+    <string name="network_failure">Network Failure</string>
+    <string name="app_name">Dream News</string>
 </resources>

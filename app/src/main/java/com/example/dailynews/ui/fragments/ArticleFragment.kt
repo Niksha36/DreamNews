@@ -66,7 +66,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
                     viewModel.deleteArticle(article)
                 binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
                 val snackbar =
-                    Snackbar.make(view, "Article was deleted", Snackbar.LENGTH_SHORT)
+                    Snackbar.make(view, R.string.delete_article_info, Snackbar.LENGTH_SHORT)
                 snackbar.anchorView =
                     (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
                 snackbar.show()
@@ -75,7 +75,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
                     viewModel.saveArticle(article)
                     binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.red))
                     val snackbar =
-                        Snackbar.make(view, "Article was successfully saved", Snackbar.LENGTH_SHORT)
+                        Snackbar.make(view, R.string.save_artiсle_info, Snackbar.LENGTH_SHORT)
                     snackbar.anchorView =
                         (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
                     snackbar.show()

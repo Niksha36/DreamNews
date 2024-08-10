@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">DailyNews</string>
+    <string name="sign_in">Войти</string>
+    <string name="continue_without_account">Продолжить без аккаунта</string>
+    <string name="app_name">Dream News</string>
     <string name="breaking_news_title">Последние новости</string>
     <string name="saved_news_title">Сохраненные</string>
     <string name="search_news_title">Поиск</string>
@@ -12,4 +14,21 @@
     <string name="science">наука</string>
     <string name="sports">спорт</string>
     <string name="technology">технологии</string>
+    <string name="password">Пароль</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="next">Далее</string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="already_have_an_account">Уже зарегистрировались? Войти</string>
+    <string name="create_a_new_account">Создать новый аккаунт</string>
+    <string name="email_verification">Подтверждение Email</string>
+    <string name="email_verification_info">Нажмите кнопку «Получить ссылку» и проверьте свой почтовый ящик. Мы отправим вам ссылку для проверки по электронной почте</string>
+    <string name="get_link">Получить ссылку!</string>
+    <string name="reset_password_info">Введите свой адрес электронной почты, и мы вышлем вам ссылку для сброса пароля.</string>
+    <string name="reset_password">Сбросить пароль</string>
+    <string name="submit">Подтвердить</string>
+    <string name="delete_article_info">Статья была успешно удалена</string>
+    <string name="save_artiсle_info">Статья была успешно сохранена</string>
+    <string name="internet_connection_info">Проверьте подключение к Интернету и повторите попытку</string>
+    <string name="network_failure">Сбой сети</string>
 </resources>

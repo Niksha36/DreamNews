@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.dailynews.NewsApplication
+import com.example.dailynews.R
 import com.example.dailynews.models.Article
 import com.example.dailynews.models.NewsResponse
 import com.example.dailynews.repository.NewsRepository
@@ -62,12 +63,12 @@ class NewsViewModel(
                 val response = newsRepository.getBreakingNews(countryName, breakingNewsPage, sortCategory)
                 breakingNews.postValue(response?.let { handleBreakingNewsResponse(it) })
             } else {
-                breakingNews.postValue(Resource.Error("Please check your internet connection and try again"))
+                breakingNews.postValue(Resource.Error(getApplication<NewsApplication>().getString(R.string.internet_connection_info)))
             }
         }
         catch (t: Throwable) {
             when(t) {
-                is IOException -> breakingNews.postValue(Resource.Error("Network Failure"))
+                is IOException -> breakingNews.postValue(Resource.Error(getApplication<NewsApplication>().getString(R.string.network_failure)))
                 else -> breakingNews.postValue(Resource.Error("Conversion Error"))
             }
         }
@@ -80,12 +81,12 @@ class NewsViewModel(
                 val response = newsRepository.searchNews(searchRequest, searchNewsPage)
                 searchNews.postValue(response?.let { handleSearchNewsResponse(it) })
             } else {
-                searchNews.postValue(Resource.Error("Please check your internet connection and try again"))
+                searchNews.postValue(Resource.Error(getApplication<NewsApplication>().getString(R.string.internet_connection_info)))
             }
         }
         catch (t: Throwable) {
             when(t) {
-                is IOException -> searchNews.postValue(Resource.Error("Network Failure"))
+                is IOException -> searchNews.postValue(Resource.Error(getApplication<NewsApplication>().getString(R.string.network_failure)))
                 else -> searchNews.postValue(Resource.Error("Conversion Error"))
             }
         }
