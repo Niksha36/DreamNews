@@ -55,7 +55,7 @@ class SavedNewsAdapter(private val userEmail: String?): RecyclerView.Adapter<Rec
     }
 
     override fun getItemCount(): Int {
-        return differ.currentList.size + 1 // +1 for the profile card
+        return differ.currentList.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -71,7 +71,7 @@ class SavedNewsAdapter(private val userEmail: String?): RecyclerView.Adapter<Rec
             }
 
         } else {
-            val oneArticle = differ.currentList[position - 1] // Adjust for profile card
+            val oneArticle = differ.currentList[position]
             (holder as NewsViewHolder).binding.apply {
                 Glide.with(this.root).load(oneArticle.urlToImage).into(ivArticleImage)
                 tvSource.text = oneArticle.source?.name

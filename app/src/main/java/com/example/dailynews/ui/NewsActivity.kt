@@ -25,8 +25,9 @@ class NewsActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
 
-        if (intent.getBooleanExtra("CLEAR_DB", false)) {
+        if (intent.getBooleanExtra("CLEAR_DB", false) == true) {
             viewModel.clearDB()
+            intent.putExtra("CLEAR_DB", false)
         }
         val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         val needsDataSync = sharedPreferences.getBoolean("needs_data_sync", false)

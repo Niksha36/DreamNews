@@ -26,7 +26,7 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
         binding = FragmentSavedNewsBinding.bind(view)
         setUpRecyclerView()
         //Оттображаем сохраненные статьи из фрагментов
-        viewModel.getSavedArticles().observe(viewLifecycleOwner, Observer {
+        viewModel.getSavedArticlesWithPlaceholder().observe(viewLifecycleOwner, Observer {
             myAdapter.differ.submitList(it)
         })
         //Добавим возможность удалять новости свайпом влево или вправо
@@ -47,6 +47,7 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
+                if (position == 0) return
                 val articleToDelete = myAdapter.differ.currentList[position]
                 viewModel.deleteArticle(articleToDelete)
                 if (authState == AuthStates.AUTHENTICATED.name) {viewModel.deleteFromFireStore(articleToDelete)}
@@ -58,6 +59,9 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
                 }
                 snackbar.anchorView = (activity as NewsActivity).findViewById(R.id.bottomNavigationView)
                 snackbar.show()
+            }
+            override fun getSwipeDirs(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+                return if (viewHolder.adapterPosition == 0) 0 else super.getSwipeDirs(recyclerView, viewHolder)
             }
         }
         ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(binding.rvSavedNews)

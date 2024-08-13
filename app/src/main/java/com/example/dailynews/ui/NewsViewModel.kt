@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.dailynews.NewsApplication
 import com.example.dailynews.R
@@ -135,7 +136,12 @@ class NewsViewModel(
     fun deleteArticle(article: Article) = viewModelScope.launch {
         newsRepository.deleteArticle(article)
     }
-    fun getSavedArticles() = newsRepository.getAllArticles()
+    fun getSavedArticlesWithPlaceholder(): LiveData<List<Article>> {
+        return newsRepository.getAllArticles().map { savedArticles ->
+            val profilePlaceholder = Article() // Create a placeholder Article object
+            listOf(profilePlaceholder) + savedArticles
+        }
+    }
 
     fun isArticleInDb(url:String): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()
