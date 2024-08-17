@@ -12,6 +12,9 @@ _**This app was translated to english and russian languages :white_check_mark:**
 In this project i use news api of NewsAPI site: https://newsapi.org/
 
 **_Some news from google news source do not open in Russia but in other countries works fine._**
+# There are 2 branches:
+1) master - default news app without auth feature
+2) auth_Feature - the same app but with auth
 # Features that were applyed in this project
 
 1)MVVM architecture
@@ -27,6 +30,10 @@ In this project i use news api of NewsAPI site: https://newsapi.org/
 6)Navigation
 
 7)Glide
+
+8)Firebase: auth, firestore
+
+9)Shared Prefferences
 
 
 <img src="https://github.com/user-attachments/assets/d8ece6b5-3f74-4181-a691-4f4716591c43" alt="Screenshot_2024-07-31-22-29-33-694_com example dailynews" style="width: 30%; height: auto;"/>
