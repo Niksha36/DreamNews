@@ -13,8 +13,8 @@ In this project i use news api of NewsAPI site: https://newsapi.org/
 
 **_Some news from google news source do not open in Russia but in other countries works fine._**
 # There are 2 branches:
-1) master - default news app without auth feature
-2) auth_Feature - the same app but with auth
+1) master - default news app without auth feature **YouTube video with branch functionality: https://youtu.be/AECh1xpZNzE**
+2) auth_Feature - the same app but with auth **YouTube video with branch functionality: https://youtu.be/qjbtuGPFrJ8**
 # Features that were applyed in this project
 
 1)MVVM architecture
